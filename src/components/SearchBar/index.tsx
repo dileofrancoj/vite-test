@@ -1,7 +1,8 @@
 import { Row, Col, InputGroup, Form } from "react-bootstrap";
 
 type SearchBarProps = {
-    onChange: () => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value: string;
 };
 const SearchBar = (props: SearchBarProps) => {
     return (
@@ -10,6 +11,7 @@ const SearchBar = (props: SearchBarProps) => {
                 <Col lg={4}>
                     <InputGroup className="mt-3 mb-3">
                         <Form.Control
+                            value={props.value}
                             onChange={props.onChange}
                             placeholder="Personaje..."
                             aria-label="personaje"

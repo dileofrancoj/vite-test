@@ -1,4 +1,5 @@
 {
+  "plugins": ["react"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -11,10 +12,8 @@
   ],
   "settings": {
     "react": {
-      // Tells eslint-plugin-react to automatically detect the version of React to use.
       "version": "detect"
     },
-    // Tells eslint how to resolve imports
     "import/resolver": {
       "node": {
         "paths": ["src"],
@@ -23,6 +22,11 @@
     }
   },
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-comment-textnodes": "error",
+    "react/jsx-uses-vars": "error",
+    "react/jsx-no-literals": "error",
+    "react/jsx-key": "error",
+    "no-console": "error"
   }
 }

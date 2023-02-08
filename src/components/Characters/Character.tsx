@@ -15,7 +15,7 @@ const Characters = ({ character }: Props): JSX.Element => {
                     <Card.Img variant="top" style={{ width: '200px', margin: '0 auto' }} className="mt-2" src={character.image} />
                     <Card.Body>
                         <CharacterName>{character.name}</CharacterName>
-                        <Button variant="primary">Link</Button>
+                        <Button variant="primary">{`Link`}</Button>
                     </Card.Body>
                 </Card>
             </Col>
