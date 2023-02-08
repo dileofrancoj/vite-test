@@ -18,7 +18,7 @@ export const useFetch = (
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<boolean>(false);
   const [response, setResponse] = React.useState({});
-
+  
   async function resolver() {
     try {
       setLoading(true);
@@ -32,6 +32,8 @@ export const useFetch = (
   }
 
   React.useEffect(() => {
+    console.log("refresh ep");
+    
     resolver();
   }, [...dependencies]);
 

@@ -9,13 +9,14 @@ import Characters from "./components/Characters/Characters";
 import { isNotEmptyString } from "./utils/strings";
 
 function App() {
-  const { response, loading, error } = useFetch("character", []);
-  const results = response.results || [];
   const [inputValue, setInputValue] = React.useState("");
   const debouncedValue = useDebounce(inputValue, 500);
+  const fetcherEP = `character${isNotEmptyString(inputValue) ? "?name=" + inputValue : ""}`
+  const { response, loading, error } = useFetch(fetcherEP, [debouncedValue]);
+  const results = response.results || [];
 
   React.useEffect(() => {
-    if (!isNotEmptyString(inputValue)) return;
+
     // console.log("fetch with: ", debouncedValue);
   }, [debouncedValue]);
 
