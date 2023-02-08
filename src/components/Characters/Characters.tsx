@@ -2,7 +2,7 @@ import { Row } from "react-bootstrap";
 import Character from "./Character";
 import { CharacterModel } from "../../types/Characters";
 interface Props {
-    characters: CharacterModel[];
+    characters: Array<CharacterModel>;
 }
 
 const Characters = ({ characters }: Props): JSX.Element => {

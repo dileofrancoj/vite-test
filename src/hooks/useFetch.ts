@@ -1,10 +1,14 @@
 import React from "react";
 import { APIInstance } from "../config/axios";
 
+
+type Response = {
+  results? : Iterable<unknown>
+}
 type APIResponse = {
   loading: boolean;
   error: boolean;
-  response: unknown;
+  response: Response;
 };
 
 export const useFetch = (
@@ -13,7 +17,7 @@ export const useFetch = (
 ): APIResponse => {
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<boolean>(false);
-  const [response, setResponse] = React.useState<unknown>(null);
+  const [response, setResponse] = React.useState({});
 
   async function resolver() {
     try {
@@ -23,7 +27,7 @@ export const useFetch = (
       setLoading(false);
     } catch (error) {
       setError(true);
-      setResponse(null);
+      setResponse([]);
     }
   }
 
