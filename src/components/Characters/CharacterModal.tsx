@@ -31,9 +31,6 @@ const CharacterModal = ({ onCloseModal, character }: Props): JSX.Element | null 
                     </Row>
                 </Container>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={onCloseModal}>Cerrar</Button>
-            </Modal.Footer>
         </Modal>
 
     )
