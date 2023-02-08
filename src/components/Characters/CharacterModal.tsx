@@ -7,7 +7,6 @@ interface Props {
 }
 
 const CharacterModal = ({ onCloseModal, character }: Props): JSX.Element | null => {
-    console.log("in here", character);
     if (!character) return null;
 
     return (

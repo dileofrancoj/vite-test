@@ -16,7 +16,6 @@ const Characters = ({ characters }: Props): JSX.Element => {
     const onCloseModal = () => setSelectedCharacterId(null)
 
     const onSelectCharacter = (characterId: number) => {
-        console.log("seteado con :", characterId);
         const character = characters.find((character) => character.id === characterId)
         setSelectedCharacterId(characterId)
         setSelectedCharacter(character)
