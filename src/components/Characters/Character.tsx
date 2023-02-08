@@ -1,12 +1,14 @@
 import { Col, Card, Button } from "react-bootstrap";
 import { CharacterModel } from '../../types/Characters'
 import { CharacterName } from './styled'
+
 interface Props {
     character: CharacterModel;
+    onSelectCharacter: (id: number) => void
 }
 
 
-const Characters = ({ character }: Props): JSX.Element => {
+const Characters = ({ character, onSelectCharacter }: Props): JSX.Element => {
     return (
         <>
             <Col xs={12} md={2} className="mb-1 mt-1">
@@ -15,7 +17,7 @@ const Characters = ({ character }: Props): JSX.Element => {
                     <Card.Body>
                         <CharacterName>{character.name}</CharacterName>
                         <p>Especie: <b>{character.species}</b></p>
-                        <Button style={{ fontSize: '10px' }} variant="outline-info">{`Más información`}</Button>
+                        <Button onClick={() => onSelectCharacter(character.id)} style={{ fontSize: '10px' }} variant="outline-info">{`Más información`}</Button>
                     </Card.Body>
                 </Card>
             </Col>
