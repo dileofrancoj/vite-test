@@ -5,15 +5,10 @@ export const SET_RESPONSE = "SET_RESPONSE";
 type Response = {
   results?: Iterable<unknown>;
 };
-type APIResponse = {
+export interface APIResponse {
   loading: boolean;
   error: boolean;
   response: Response;
-};
-
-type Action = {
-  type: string;
-  payload: unknown;
 };
 
 export const initialState: APIResponse = {

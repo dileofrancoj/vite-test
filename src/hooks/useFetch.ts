@@ -1,4 +1,4 @@
-import React, { Reducer, ReducerAction } from "react";
+import React from "react";
 import { APIInstance } from "../config/axios";
 import {
   fetchReducer,
@@ -6,16 +6,8 @@ import {
   setError,
   setResponse,
   initialState,
+  APIResponse
 } from "../state/reducers/fetch";
-
-type Response = {
-  results?: Iterable<unknown>;
-};
-type APIResponse = {
-  loading: boolean;
-  error: boolean;
-  response: Response;
-};
 
 export const useFetch = (
   endpoint: string,
