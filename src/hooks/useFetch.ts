@@ -18,6 +18,9 @@ export const useFetch = (
 
   async function resolver() {
     try {
+      console.log("etra");
+      
+      setLoading(dispatch,true)
       const { data } = await APIInstance.get(endpoint);
       setResponse(dispatch, data);
       setLoading(dispatch, false);
