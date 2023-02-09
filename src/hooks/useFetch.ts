@@ -1,10 +1,16 @@
-import React from "react";
+import React, { Reducer, ReducerAction } from "react";
 import { APIInstance } from "../config/axios";
-
+import {
+  fetchReducer,
+  setLoading,
+  setError,
+  setResponse,
+  initialState,
+} from "../state/reducers/fetch";
 
 type Response = {
-  results? : Iterable<unknown>
-}
+  results?: Iterable<unknown>;
+};
 type APIResponse = {
   loading: boolean;
   error: boolean;
@@ -15,25 +21,23 @@ export const useFetch = (
   endpoint: string,
   dependencies: string[] = []
 ): APIResponse => {
-  const [loading, setLoading] = React.useState<boolean>(true);
-  const [error, setError] = React.useState<boolean>(false);
-  const [response, setResponse] = React.useState({});
-  
+  const [state, dispatch] = React.useReducer(fetchReducer, initialState);
+  const { loading, error, response } = state;
+
   async function resolver() {
     try {
-      setLoading(true);
       const { data } = await APIInstance.get(endpoint);
-      setResponse(data);
-      setLoading(false);
+      setResponse(dispatch, data);
+      setLoading(dispatch, false);
     } catch (error) {
-      setError(true);
-      setResponse([]);
+      setError(dispatch);
+      setResponse(dispatch, []);
     }
   }
 
   React.useEffect(() => {
     console.log("refresh ep");
-    
+
     resolver();
   }, [...dependencies]);
 
