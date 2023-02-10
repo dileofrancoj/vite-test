@@ -2,14 +2,22 @@ export const SET_LOADING = "SET_LOADING";
 export const SET_ERROR = "SET_ERROR";
 export const SET_RESPONSE = "SET_RESPONSE";
 
+export interface Info {
+  count: number | undefined;
+  pages: number | undefined;
+  next?: string;
+  prev?: string;
+}
+
 type Response = {
-  results?: Iterable<unknown>;
+  results?: Array<unknown>;
+  info?: Info;
 };
 export interface APIResponse {
   loading: boolean;
   error: boolean;
   response: Response;
-};
+}
 
 export const initialState: APIResponse = {
   loading: true,

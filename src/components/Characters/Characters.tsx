@@ -10,7 +10,6 @@ interface Props {
 }
 
 const Characters = ({ characters }: Props): JSX.Element => {
-
     const [selectedCharacterId, setSelectedCharacterId] = React.useState<number | null>(null)
     const [selectedCharacter, setSelectedCharacter] = React.useState<CharacterModel | undefined>(undefined)
     const onCloseModal = () => setSelectedCharacterId(null)
@@ -22,7 +21,7 @@ const Characters = ({ characters }: Props): JSX.Element => {
     }
 
     function buildCharacter() {
-        return characters.map((character) => (
+        return characters?.map((character) => (
             <Character onSelectCharacter={onSelectCharacter} character={character} key={character.id} />
         ));
     }
